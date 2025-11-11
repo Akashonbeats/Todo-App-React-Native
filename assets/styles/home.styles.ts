@@ -132,22 +132,7 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
       marginVertical: 12,
     },
     todoItem: {
-      flexDirection: "row",
-      alignItems: "flex-start",
-      padding: 20,
-      borderRadius: 20,
-      backgroundColor: "transparent",
-      borderWidth: 1,
-      borderColor: colors.border,
-      overflow: "hidden",
-      shadowColor: colors.shadow,
-      shadowOffset: {
-        width: 0,
-        height: 8,
-      },
-      shadowOpacity: 0.15,
-      shadowRadius: 16,
-      elevation: 12,
+      width: '100%',
     },
     checkbox: {
       marginRight: 16,

@@ -7,8 +7,9 @@ import { api } from "@/convex/_generated/api";
 import { Doc, Id } from "@/convex/_generated/dataModel";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
+import { GlassEffectContainer, Host, HStack, VStack } from "@expo/ui/swift-ui";
+import { glassEffect, cornerRadius, padding, shadow } from "@expo/ui/swift-ui/modifiers";
 import { useMutation, useQuery } from "convex/react";
-import { BlurView } from "expo-blur";
 import * as Haptics from "expo-haptics";
 import { useState } from "react";
 import { Alert, FlatList, StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -94,73 +95,81 @@ export default function Index() {
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           <View style={homeStyles.todoItemWrapper}>
-            <BlurView 
-              intensity={100} 
-              tint="systemChromeMaterial"
-              style={homeStyles.todoItem}
-            >
-              <TouchableOpacity
-                style={homeStyles.checkbox}
-                activeOpacity={0.7}
-                onPress={() => handleToggleTodo(item._id)}
+            <GlassEffectContainer spacing={8}>
+              <Host
+                style={homeStyles.todoItem}
+                modifiers={[
+                  glassEffect({ glass: { variant: "regular", interactive: true } }),
+                  cornerRadius(20),
+                  padding({ all: 20 }),
+                  shadow({ radius: 16, x: 0, y: 8, opacity: 0.15 })
+                ]}
               >
-                <View
-                  style={[
-                    homeStyles.checkboxInner,
-                    { 
-                      borderColor: item.isCompleted ? colors.success : colors.border,
-                      backgroundColor: item.isCompleted ? colors.success : "transparent"
-                    },
-                  ]}
-                >
-                  {item.isCompleted && <Ionicons name="checkmark" size={18} color="#fff" />}
-                </View>
-              </TouchableOpacity>
-
-              {isEditing ? (
-                <View style={homeStyles.editContainer}>
-                  <TextInput
-                    style={homeStyles.editInput}
-                    value={editText}
-                    onChangeText={setEditText}
-                    autoFocus
-                    multiline
-                    placeholder="Edit your todo..."
-                    placeholderTextColor={colors.textMuted}
-                  />
-                  <View style={homeStyles.editButtons}>
-                    <TouchableOpacity onPress={handleSaveEdit} activeOpacity={0.8}>
-                      <View style={[homeStyles.editButton, { backgroundColor: colors.success }]}>
-                        <Ionicons name="checkmark" size={16} color="#fff" />
-                        <Text style={homeStyles.editButtonText}>Save</Text>
-                      </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={handleCancelEdit} activeOpacity={0.8}>
-                      <View style={[homeStyles.editButton, { backgroundColor: colors.muted }]}>
-                        <Ionicons name="close" size={16} color="#fff" />
-                        <Text style={homeStyles.editButtonText}>Cancel</Text>
-                      </View>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              ) : (
-                <View style={homeStyles.todoTextContainer}>
-                  <Text
-                    style={[
-                      homeStyles.todoText,
-                      item.isCompleted && {
-                        textDecorationLine: "line-through",
-                        color: colors.textMuted,
-                        opacity: 0.6,
-                      },
-                    ]}
+                <HStack spacing={16} alignment="top">
+                  <TouchableOpacity
+                    style={homeStyles.checkbox}
+                    activeOpacity={0.7}
+                    onPress={() => handleToggleTodo(item._id)}
                   >
-                    {item.text}
-                  </Text>
-                </View>
-              )}
-            </BlurView>
+                    <View
+                      style={[
+                        homeStyles.checkboxInner,
+                        { 
+                          borderColor: item.isCompleted ? colors.success : colors.border,
+                          backgroundColor: item.isCompleted ? colors.success : "transparent"
+                        },
+                      ]}
+                    >
+                      {item.isCompleted && <Ionicons name="checkmark" size={18} color="#fff" />}
+                    </View>
+                  </TouchableOpacity>
+
+                  {isEditing ? (
+                    <VStack spacing={12} alignment="leading" style={{ flex: 1 }}>
+                      <TextInput
+                        style={homeStyles.editInput}
+                        value={editText}
+                        onChangeText={setEditText}
+                        autoFocus
+                        multiline
+                        placeholder="Edit your todo..."
+                        placeholderTextColor={colors.textMuted}
+                      />
+                      <HStack spacing={12}>
+                        <TouchableOpacity onPress={handleSaveEdit} activeOpacity={0.8}>
+                          <View style={[homeStyles.editButton, { backgroundColor: colors.success }]}>
+                            <Ionicons name="checkmark" size={16} color="#fff" />
+                            <Text style={homeStyles.editButtonText}>Save</Text>
+                          </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={handleCancelEdit} activeOpacity={0.8}>
+                          <View style={[homeStyles.editButton, { backgroundColor: colors.muted }]}>
+                            <Ionicons name="close" size={16} color="#fff" />
+                            <Text style={homeStyles.editButtonText}>Cancel</Text>
+                          </View>
+                        </TouchableOpacity>
+                      </HStack>
+                    </VStack>
+                  ) : (
+                    <View style={homeStyles.todoTextContainer}>
+                      <Text
+                        style={[
+                          homeStyles.todoText,
+                          item.isCompleted && {
+                            textDecorationLine: "line-through",
+                            color: colors.textMuted,
+                            opacity: 0.6,
+                          },
+                        ]}
+                      >
+                        {item.text}
+                      </Text>
+                    </View>
+                  )}
+                </HStack>
+              </Host>
+            </GlassEffectContainer>
           </View>
         </DropdownMenu.Trigger>
 
