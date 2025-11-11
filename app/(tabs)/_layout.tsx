@@ -1,44 +1,30 @@
-import useTheme from "@/hooks/useTheme";
-import { Ionicons } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { Icon, Label, NativeTabs } from "expo-router/unstable-native-tabs";
 import React from "react";
+import { DynamicColorIOS } from "react-native";
 export default function TabsLayout() {
-  const { colors } = useTheme();
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textMuted,
-        tabBarStyle: {
-          backgroundColor: colors.surface,
-          borderTopWidth: 1,
-          borderTopColor: colors.border,
-          paddingTop: 10,
-        },
-        tabBarLabelStyle: {
-          fontSize: 9,
-        },
-        headerShown: false,
+    <NativeTabs
+      labelStyle={{
+        // For the text color
+        color: DynamicColorIOS({
+          dark: "white",
+          light: "black",
+        }),
       }}
+      // For the selected icon color
+      tintColor={DynamicColorIOS({
+        dark: "#3b82f6",
+        light: "#3b82f6",
+      })}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Todos",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="flash-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: "Settings",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" size={size} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+      <NativeTabs.Trigger name="index">
+        <Label>Home</Label>
+        <Icon sf={"house.fill"} drawable="ic_menu_mylocation" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <Label>Settings</Label>
+        <Icon sf={"gear"} drawable="ic_menu_settings" />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }
