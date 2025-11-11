@@ -3,7 +3,6 @@ import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useMutation } from "convex/react";
-import { LinearGradient } from "expo-linear-gradient";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 
 const DangerZone = () => {
@@ -40,7 +39,7 @@ const DangerZone = () => {
   };
 
   return (
-    <LinearGradient colors={colors.gradients.surface} style={settingsStyles.section}>
+    <View style={[settingsStyles.section, { backgroundColor: colors.surface }]}>
 
       <TouchableOpacity
         style={[settingsStyles.actionButton, { borderBottomWidth: 0 }]}
@@ -48,14 +47,14 @@ const DangerZone = () => {
         activeOpacity={0.7}
       >
         <View style={settingsStyles.actionLeft}>
-          <LinearGradient colors={colors.gradients.danger} style={settingsStyles.actionIcon}>
+          <View style={[settingsStyles.actionIcon, { backgroundColor: colors.danger }]}>
             <Ionicons name="trash" size={18} color="#ffffff" />
-          </LinearGradient>
+          </View>
           <Text style={settingsStyles.actionTextDanger}>Reset App</Text>
         </View>
         <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
       </TouchableOpacity>
-    </LinearGradient>
+    </View>
   );
 };
 

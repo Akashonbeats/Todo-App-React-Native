@@ -4,7 +4,6 @@ import Preferences from "@/components/Preferences";
 import ProgressStats from "@/components/ProgressStats";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 
 import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -15,14 +14,14 @@ const SettingsScreen = () => {
   const settingsStyles = createSettingsStyles(colors);
 
   return (
-    <LinearGradient colors={colors.gradients.background} style={settingsStyles.container}>
+    <View style={[settingsStyles.container, { backgroundColor: colors.bg }]}>
       <SafeAreaView style={settingsStyles.safeArea} edges={["top"]}>
         {/* HEADER */}
         <View style={settingsStyles.header}>
           <View style={settingsStyles.titleContainer}>
-            <LinearGradient colors={colors.gradients.primary} style={settingsStyles.iconContainer}>
+            <View style={[settingsStyles.iconContainer, { backgroundColor: colors.primary }]}>
               <Ionicons name="settings" size={28} color="#ffffff" />
-            </LinearGradient>
+            </View>
             <Text style={settingsStyles.title}>Settings</Text>
           </View>
         </View>
@@ -37,7 +36,7 @@ const SettingsScreen = () => {
           <DangerZone />
         </ScrollView>
       </SafeAreaView>
-    </LinearGradient>
+    </View>
   );
 };
 export default SettingsScreen;

@@ -1,7 +1,6 @@
 import { createSettingsStyles } from "@/assets/styles/settings.styles.";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import { Switch, Text, View } from "react-native";
 
@@ -14,15 +13,15 @@ const Preferences = () => {
   const settingsStyles = createSettingsStyles(colors);
 
   return (
-    <LinearGradient colors={colors.gradients.surface} style={settingsStyles.section}>
+    <View style={[settingsStyles.section, { backgroundColor: colors.surface }]}>
       <Text style={settingsStyles.sectionTitle}>Preferences</Text>
 
       {/* DARK MODE */}
       <View style={settingsStyles.settingItem}>
         <View style={settingsStyles.settingLeft}>
-          <LinearGradient colors={colors.gradients.primary} style={settingsStyles.settingIcon}>
+          <View style={[settingsStyles.settingIcon, { backgroundColor: colors.primary }]}>
             <Ionicons name="moon" size={18} color="#fff" />
-          </LinearGradient>
+          </View>
           <Text style={settingsStyles.settingText}>Dark Mode</Text>
         </View>
         <Switch
@@ -37,9 +36,9 @@ const Preferences = () => {
       {/* NOTIFICATONS */}
       <View style={settingsStyles.settingItem}>
         <View style={settingsStyles.settingLeft}>
-          <LinearGradient colors={colors.gradients.warning} style={settingsStyles.settingIcon}>
+          <View style={[settingsStyles.settingIcon, { backgroundColor: colors.warning }]}>
             <Ionicons name="notifications" size={18} color="#fff" />
-          </LinearGradient>
+          </View>
           <Text style={settingsStyles.settingText}>Notifications</Text>
         </View>
         <Switch
@@ -54,9 +53,9 @@ const Preferences = () => {
       {/* AUTO-SYNC */}
       <View style={settingsStyles.settingItem}>
         <View style={settingsStyles.settingLeft}>
-          <LinearGradient colors={colors.gradients.success} style={settingsStyles.settingIcon}>
+          <View style={[settingsStyles.settingIcon, { backgroundColor: colors.success }]}>
             <Ionicons name="notifications" size={18} color="#fff" />
-          </LinearGradient>
+          </View>
           <Text style={settingsStyles.settingText}>Auto Sync</Text>
         </View>
         <Switch
@@ -67,7 +66,7 @@ const Preferences = () => {
           ios_backgroundColor={colors.border}
         />
       </View>
-    </LinearGradient>
+    </View>
   );
 };
 
