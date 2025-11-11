@@ -20,9 +20,6 @@ export default function Header() {
   return (
     <View style={homeStyles.header}>
       <View style={homeStyles.titleContainer}>
-        <LinearGradient colors={colors.gradients.primary} style={homeStyles.iconContainer}>
-          <Ionicons name="flash-outline" size={28} color="#fff" />
-        </LinearGradient>
 
         <View style={homeStyles.titleTextContainer}>
           <Text style={homeStyles.title}>Today&apos;s Tasks</Text>

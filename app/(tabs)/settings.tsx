@@ -20,9 +20,6 @@ const SettingsScreen = () => {
         {/* HEADER */}
         <View style={settingsStyles.header}>
           <View style={settingsStyles.titleContainer}>
-            <LinearGradient colors={colors.gradients.primary} style={settingsStyles.iconContainer}>
-              <Ionicons name="settings" size={28} color="#ffffff" />
-            </LinearGradient>
             <Text style={settingsStyles.title}>Settings</Text>
           </View>
         </View>
