@@ -37,6 +37,7 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
       justifyContent: "center",
       alignItems: "center",
       marginRight: 16,
+      backgroundColor: colors.primary,
     },
     titleTextContainer: {
       flex: 1,
@@ -71,6 +72,7 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
     progressFill: {
       height: "100%",
       borderRadius: 6,
+      backgroundColor: colors.success,
     },
     progressText: {
       fontSize: 16,
@@ -110,6 +112,7 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
       borderRadius: 28,
       justifyContent: "center",
       alignItems: "center",
+      backgroundColor: colors.primary,
     },
     addButtonDisabled: {
       opacity: 0.5,
@@ -133,14 +136,18 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
       alignItems: "flex-start",
       padding: 20,
       borderRadius: 20,
-      shadowColor: "#000",
+      backgroundColor: "transparent",
+      borderWidth: 1,
+      borderColor: colors.border,
+      overflow: "hidden",
+      shadowColor: colors.shadow,
       shadowOffset: {
         width: 0,
-        height: 4,
+        height: 8,
       },
-      shadowOpacity: 0.1,
-      shadowRadius: 8,
-      elevation: 8,
+      shadowOpacity: 0.15,
+      shadowRadius: 16,
+      elevation: 12,
     },
     checkbox: {
       marginRight: 16,
@@ -153,6 +160,7 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
       borderWidth: 2,
       justifyContent: "center",
       alignItems: "center",
+      backgroundColor: "transparent",
     },
     todoTextContainer: {
       flex: 1,
@@ -219,6 +227,8 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
       justifyContent: "center",
       alignItems: "center",
       marginBottom: 24,
+      backgroundColor: colors.muted,
+      opacity: 0.3,
     },
     emptyText: {
       fontSize: 24,

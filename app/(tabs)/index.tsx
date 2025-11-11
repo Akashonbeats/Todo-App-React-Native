@@ -8,11 +8,12 @@ import { Doc, Id } from "@/convex/_generated/dataModel";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useMutation, useQuery } from "convex/react";
+import { BlurView } from "expo-blur";
 import * as Haptics from "expo-haptics";
-import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import { Alert, FlatList, StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import * as DropdownMenu from "zeego/dropdown-menu";
 
 type Todo = Doc<"todos">;
 
@@ -90,92 +91,96 @@ export default function Index() {
   const renderTodoItem = ({ item }: { item: Todo }) => {
     const isEditing = editingId === item._id;
     return (
-      <View style={homeStyles.todoItemWrapper}>
-        <LinearGradient
-          colors={colors.gradients.surface}
-          style={homeStyles.todoItem}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-        >
-          <TouchableOpacity
-            style={homeStyles.checkbox}
-            activeOpacity={0.7}
-            onPress={() => handleToggleTodo(item._id)}
-          >
-            <LinearGradient
-              colors={item.isCompleted ? colors.gradients.success : colors.gradients.muted}
-              style={[
-                homeStyles.checkboxInner,
-                { borderColor: item.isCompleted ? "transparent" : colors.border },
-              ]}
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger>
+          <View style={homeStyles.todoItemWrapper}>
+            <BlurView 
+              intensity={100} 
+              tint="systemChromeMaterial"
+              style={homeStyles.todoItem}
             >
-              {item.isCompleted && <Ionicons name="checkmark" size={18} color="#fff" />}
-            </LinearGradient>
-          </TouchableOpacity>
-
-          {isEditing ? (
-            <View style={homeStyles.editContainer}>
-              <TextInput
-                style={homeStyles.editInput}
-                value={editText}
-                onChangeText={setEditText}
-                autoFocus
-                multiline
-                placeholder="Edit your todo..."
-                placeholderTextColor={colors.textMuted}
-              />
-              <View style={homeStyles.editButtons}>
-                <TouchableOpacity onPress={handleSaveEdit} activeOpacity={0.8}>
-                  <LinearGradient colors={colors.gradients.success} style={homeStyles.editButton}>
-                    <Ionicons name="checkmark" size={16} color="#fff" />
-                    <Text style={homeStyles.editButtonText}>Save</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={handleCancelEdit} activeOpacity={0.8}>
-                  <LinearGradient colors={colors.gradients.muted} style={homeStyles.editButton}>
-                    <Ionicons name="close" size={16} color="#fff" />
-                    <Text style={homeStyles.editButtonText}>Cancel</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              </View>
-            </View>
-          ) : (
-            <View style={homeStyles.todoTextContainer}>
-              <Text
-                style={[
-                  homeStyles.todoText,
-                  item.isCompleted && {
-                    textDecorationLine: "line-through",
-                    color: colors.textMuted,
-                    opacity: 0.6,
-                  },
-                ]}
+              <TouchableOpacity
+                style={homeStyles.checkbox}
+                activeOpacity={0.7}
+                onPress={() => handleToggleTodo(item._id)}
               >
-                {item.text}
-              </Text>
+                <View
+                  style={[
+                    homeStyles.checkboxInner,
+                    { 
+                      borderColor: item.isCompleted ? colors.success : colors.border,
+                      backgroundColor: item.isCompleted ? colors.success : "transparent"
+                    },
+                  ]}
+                >
+                  {item.isCompleted && <Ionicons name="checkmark" size={18} color="#fff" />}
+                </View>
+              </TouchableOpacity>
 
-              <View style={homeStyles.todoActions}>
-                <TouchableOpacity onPress={() => handleEditTodo(item)} activeOpacity={0.8}>
-                  <LinearGradient colors={colors.gradients.warning} style={homeStyles.actionButton}>
-                    <Ionicons name="pencil" size={14} color="#fff" />
-                  </LinearGradient>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleDeleteTodo(item._id)} activeOpacity={0.8}>
-                  <LinearGradient colors={colors.gradients.danger} style={homeStyles.actionButton}>
-                    <Ionicons name="trash" size={14} color="#fff" />
-                  </LinearGradient>
-                </TouchableOpacity>
-              </View>
-            </View>
-          )}
-        </LinearGradient>
-      </View>
+              {isEditing ? (
+                <View style={homeStyles.editContainer}>
+                  <TextInput
+                    style={homeStyles.editInput}
+                    value={editText}
+                    onChangeText={setEditText}
+                    autoFocus
+                    multiline
+                    placeholder="Edit your todo..."
+                    placeholderTextColor={colors.textMuted}
+                  />
+                  <View style={homeStyles.editButtons}>
+                    <TouchableOpacity onPress={handleSaveEdit} activeOpacity={0.8}>
+                      <View style={[homeStyles.editButton, { backgroundColor: colors.success }]}>
+                        <Ionicons name="checkmark" size={16} color="#fff" />
+                        <Text style={homeStyles.editButtonText}>Save</Text>
+                      </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={handleCancelEdit} activeOpacity={0.8}>
+                      <View style={[homeStyles.editButton, { backgroundColor: colors.muted }]}>
+                        <Ionicons name="close" size={16} color="#fff" />
+                        <Text style={homeStyles.editButtonText}>Cancel</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              ) : (
+                <View style={homeStyles.todoTextContainer}>
+                  <Text
+                    style={[
+                      homeStyles.todoText,
+                      item.isCompleted && {
+                        textDecorationLine: "line-through",
+                        color: colors.textMuted,
+                        opacity: 0.6,
+                      },
+                    ]}
+                  >
+                    {item.text}
+                  </Text>
+                </View>
+              )}
+            </BlurView>
+          </View>
+        </DropdownMenu.Trigger>
+
+        <DropdownMenu.Content>
+          <DropdownMenu.Item key="edit" onSelect={() => handleEditTodo(item)}>
+            <DropdownMenu.ItemTitle>Edit</DropdownMenu.ItemTitle>
+            <DropdownMenu.ItemIcon ios={{ name: "pencil" }} />
+          </DropdownMenu.Item>
+          
+          <DropdownMenu.Item key="delete" destructive onSelect={() => handleDeleteTodo(item._id)}>
+            <DropdownMenu.ItemTitle>Delete</DropdownMenu.ItemTitle>
+            <DropdownMenu.ItemIcon ios={{ name: "trash" }} />
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
     );
   };
 
   return (
-    <LinearGradient colors={colors.gradients.background} style={homeStyles.container}>
+    <View style={[homeStyles.container, { backgroundColor: colors.bg }]}>
       <StatusBar barStyle={colors.statusBarStyle} />
       <SafeAreaView style={homeStyles.safeArea} edges={["top"]}>
         <Header />
@@ -192,6 +197,6 @@ export default function Index() {
           showsVerticalScrollIndicator={false}
         />
       </SafeAreaView>
-    </LinearGradient>
+    </View>
   );
 }

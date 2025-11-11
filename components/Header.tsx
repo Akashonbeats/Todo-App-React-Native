@@ -3,7 +3,6 @@ import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useQuery } from "convex/react";
-import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { Text, View } from "react-native";
 
@@ -20,9 +19,9 @@ export default function Header() {
   return (
     <View style={homeStyles.header}>
       <View style={homeStyles.titleContainer}>
-        <LinearGradient colors={colors.gradients.primary} style={homeStyles.iconContainer}>
+        <View style={homeStyles.iconContainer}>
           <Ionicons name="flash-outline" size={28} color="#fff" />
-        </LinearGradient>
+        </View>
 
         <View style={homeStyles.titleTextContainer}>
           <Text style={homeStyles.title}>Today&apos;s Tasks</Text>
@@ -35,8 +34,7 @@ export default function Header() {
       <View style={homeStyles.progressContainer}>
         <View style={homeStyles.progressBarContainer}>
           <View style={homeStyles.progressBar}>
-            <LinearGradient
-              colors={colors.gradients.success}
+            <View
               style={[homeStyles.progressFill, { width: `${progressPercentage}%` }]}
             />
           </View>

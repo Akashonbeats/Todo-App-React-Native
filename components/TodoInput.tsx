@@ -4,7 +4,6 @@ import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useMutation } from "convex/react";
 import * as Haptics from "expo-haptics";
-import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import { Alert, TextInput, TouchableOpacity, View } from "react-native";
 
@@ -42,12 +41,15 @@ export default function TodoInput() {
           placeholderTextColor={colors.textMuted}
         />
         <TouchableOpacity onPress={handleAddTodo} activeOpacity={0.8} disabled={!newTodo.trim()}>
-          <LinearGradient
-            colors={newTodo.trim() ? colors.gradients.primary : colors.gradients.muted}
-            style={[homeStyles.addButton, !newTodo.trim() && homeStyles.addButtonDisabled]}
-            >
+          <View
+            style={[
+              homeStyles.addButton, 
+              !newTodo.trim() && homeStyles.addButtonDisabled,
+              { backgroundColor: newTodo.trim() ? colors.primary : colors.muted }
+            ]}
+          >
             <Ionicons name="add" size={24} color="#ffffff" />
-          </LinearGradient>
+          </View>
         </TouchableOpacity>
       </View>
     </View>
