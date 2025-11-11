@@ -20,7 +20,7 @@ const Preferences = () => {
       {/* DARK MODE */}
       <View style={settingsStyles.settingItem}>
         <View style={settingsStyles.settingLeft}>
-          <LinearGradient colors={colors.gradients.primary} style={settingsStyles.settingIcon}>
+          <LinearGradient colors={colors.gradients.misc} style={settingsStyles.settingIcon}>
             <Ionicons name="moon" size={18} color="#fff" />
           </LinearGradient>
           <Text style={settingsStyles.settingText}>Dark Mode</Text>
@@ -29,7 +29,7 @@ const Preferences = () => {
           value={isDarkMode}
           onValueChange={toggleDarkMode}
           thumbColor={"#fff"}
-          trackColor={{ false: colors.border, true: colors.primary }}
+          trackColor={{ false: colors.border, true: colors.switch }}
           ios_backgroundColor={colors.border}
         />
       </View>
@@ -37,7 +37,7 @@ const Preferences = () => {
       {/* NOTIFICATONS */}
       <View style={settingsStyles.settingItem}>
         <View style={settingsStyles.settingLeft}>
-          <LinearGradient colors={colors.gradients.warning} style={settingsStyles.settingIcon}>
+          <LinearGradient colors={colors.gradients.misc} style={settingsStyles.settingIcon}>
             <Ionicons name="notifications" size={18} color="#fff" />
           </LinearGradient>
           <Text style={settingsStyles.settingText}>Notifications</Text>
@@ -46,7 +46,7 @@ const Preferences = () => {
           value={isNotificationsEnabled}
           onValueChange={() => setIsNotificationsEnabled(!isNotificationsEnabled)}
           thumbColor={"#fff"}
-          trackColor={{ false: colors.border, true: colors.warning }}
+          trackColor={{ false: colors.border, true: colors.switch }}
           ios_backgroundColor={colors.border}
         />
       </View>
@@ -54,7 +54,7 @@ const Preferences = () => {
       {/* AUTO-SYNC */}
       <View style={settingsStyles.settingItem}>
         <View style={settingsStyles.settingLeft}>
-          <LinearGradient colors={colors.gradients.success} style={settingsStyles.settingIcon}>
+          <LinearGradient colors={colors.gradients.misc} style={settingsStyles.settingIcon}>
             <Ionicons name="notifications" size={18} color="#fff" />
           </LinearGradient>
           <Text style={settingsStyles.settingText}>Auto Sync</Text>
@@ -63,7 +63,7 @@ const Preferences = () => {
           value={isAutoSync}
           onValueChange={() => setIsAutoSync(!isAutoSync)}
           thumbColor={"#fff"}
-          trackColor={{ false: colors.border, true: colors.success }}
+          trackColor={{ false: colors.border, true: colors.switch }}
           ios_backgroundColor={colors.border}
         />
       </View>

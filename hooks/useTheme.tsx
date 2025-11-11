@@ -14,6 +14,7 @@ export interface ColorScheme {
   warning: string;
   danger: string;
   shadow: string;
+  switch: string;
   gradients: {
     background: [string, string];
     surface: [string, string];
@@ -23,6 +24,7 @@ export interface ColorScheme {
     danger: [string, string];
     muted: [string, string];
     empty: [string, string];
+    misc: [string, string];
   };
   backgrounds: {
     input: string;
@@ -32,58 +34,68 @@ export interface ColorScheme {
 }
 
 const lightColors: ColorScheme = {
-  bg: "#f8fafc",
-  surface: "#ffffff",
-  text: "#1e293b",
-  textMuted: "#64748b",
-  border: "#e2e8f0",
-  primary: "#3b82f6",
-  success: "#10b981",
-  warning: "#f59e0b",
-  danger: "#ef4444",
-  shadow: "#000000",
+  bg: "#FFF9D6",
+  surface: "#DFF6E3",
+  text: "#2A4E50",
+  textMuted: "#568C91",
+  border: "#63AEC2",          // darker blue for input border
+  primary: "#3F90A8",         // slightly deeper blue for active/progress elements
+  success: "#7BD389",
+  warning: "#EFB96A",
+  danger: "#eb534e",
+  shadow: "rgba(0, 0, 0, 0.15)",
+  switch: "#2A4E50",
+
   gradients: {
-    background: ["#f8fafc", "#e2e8f0"],
-    surface: ["#ffffff", "#f8fafc"],
-    primary: ["#3b82f6", "#1d4ed8"],
-    success: ["#10b981", "#059669"],
-    warning: ["#f59e0b", "#d97706"],
-    danger: ["#ef4444", "#dc2626"],
-    muted: ["#9ca3af", "#6b7280"],
-    empty: ["#f3f4f6", "#e5e7eb"],
+    background: ["#FFF9D6", "#FFF4BE"],
+    surface: ["#dff6e3ff", "#dff6e3ff"],
+    primary: ["#62b5ccff", "#347F96"],
+    success: ["#29454dff", "#29454dff"],
+    warning: ["#62b5ccff", "#4CA3BB"],
+    danger: ["#eb534e", "#D66E6E"],
+    muted: ["#AACBCD", "#8DB5B8"],
+    empty: ["#F5F8EB", "#EBF6E2"],
+    misc: ["#2A4E50","#4a8a8dff"]
   },
+
   backgrounds: {
-    input: "#ffffff",
-    editInput: "#ffffff",
+    input: "#E1F7E5",
+    editInput: "#D1F0D7",
   },
+
   statusBarStyle: "dark-content" as const,
 };
 
 const darkColors: ColorScheme = {
-  bg: "#0f172a",
-  surface: "#1e293b",
-  text: "#f1f5f9",
-  textMuted: "#94a3b8",
-  border: "#334155",
-  primary: "#60a5fa",
-  success: "#34d399",
-  warning: "#fbbf24",
-  danger: "#f87171",
-  shadow: "#000000",
+  bg: "#141310ff",
+  surface: "#3B4448",
+  text: "#E6F1F1",
+  textMuted: "#A5C8C8",
+  border: "#164856ff",          // slightly darker teal border
+  primary: "#4CA3BB",         // rich mid-teal for highlights
+  success: "#4CA3BB",
+  warning: "#4CA3BB",
+  danger: "#eb534e",
+  shadow: "rgba(0, 0, 0, 0.6)",
+  switch: "#2A4E50",
+
   gradients: {
-    background: ["#0f172a", "#1e293b"],
-    surface: ["#1e293b", "#334155"],
-    primary: ["#3b82f6", "#1d4ed8"],
-    success: ["#10b981", "#059669"],
-    warning: ["#f59e0b", "#d97706"],
-    danger: ["#ef4444", "#dc2626"],
-    muted: ["#374151", "#4b5563"],
-    empty: ["#374151", "#4b5563"],
+    background: ["#2d2c25ff", "#000000"],
+    surface: ["#1b2225ff", "#1b2225ff"],
+    primary: ["#62b5ccff", "#347F96"],
+    success: ["#62b5ccff", "#4CA3BB"],
+    warning: ["#468091ff", "#568492ff"],
+    danger: ["#ba4e4bff", "#a95454ff"],
+    muted: ["#66797B", "#52686A"],
+    empty: ["#3C4748", "#404A4B"],
+    misc: ["#2A4E50","#4a8a8dff"]
   },
+
   backgrounds: {
-    input: "#1e293b",
-    editInput: "#0f172a",
+    input: "#3E474A",
+    editInput: "#333A3E",
   },
+
   statusBarStyle: "light-content" as const,
 };
 
