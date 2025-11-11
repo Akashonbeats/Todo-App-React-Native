@@ -3,6 +3,7 @@ import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useMutation } from "convex/react";
+import * as Haptics from "expo-haptics";
 import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import { Alert, TextInput, TouchableOpacity, View } from "react-native";
@@ -18,6 +19,8 @@ export default function TodoInput() {
     const handleAddTodo = async () => {
     if (newTodo.trim()) {
       try {
+        // Add native iOS haptic feedback
+        await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         await addTodo({ text: newTodo.trim() });
         setNewTodo("");
       } catch (error) {

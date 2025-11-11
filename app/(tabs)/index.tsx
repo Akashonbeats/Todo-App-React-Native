@@ -8,6 +8,7 @@ import { Doc, Id } from "@/convex/_generated/dataModel";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useMutation, useQuery } from "convex/react";
+import * as Haptics from "expo-haptics";
 import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import { Alert, FlatList, StatusBar, Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -34,6 +35,8 @@ export default function Index() {
 
   const handleToggleTodo = async (id: Id<"todos">) => {
     try {
+      // Add native iOS haptic feedback
+      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       await toggleTodo({ id });
     } catch (error) {
       console.log("Error toggling todo", error);
@@ -42,9 +45,20 @@ export default function Index() {
   };
 
   const handleDeleteTodo = async (id: Id<"todos">) => {
+    // Add native iOS haptic feedback for alert
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    
     Alert.alert("Delete Todo", "Are you sure you want to delete this todo?", [
       { text: "Cancel", style: "cancel" },
-      { text: "Delete", style: "destructive", onPress: () => deleteTodo({ id }) },
+      { 
+        text: "Delete", 
+        style: "destructive", 
+        onPress: async () => {
+          // Success notification haptic on delete
+          await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          deleteTodo({ id });
+        }
+      },
     ]);
   };
 
@@ -56,6 +70,8 @@ export default function Index() {
   const handleSaveEdit = async () => {
     if (editingId) {
       try {
+        // Add native iOS haptic feedback on save
+        await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         await updateTodo({ id: editingId, text: editText.trim() });
         setEditingId(null);
         setEditText("");
