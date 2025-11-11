@@ -10,11 +10,18 @@ export default function TabsLayout() {
           dark: "white",
           light: "black",
         }),
+        selected: {
+          // Color for selected tab (your original colors)
+          color: DynamicColorIOS({
+            dark: "#fff6c2ff",
+            light: "#468091ff",
+          }),
+        },
       }}
       // For the selected icon color
       tintColor={DynamicColorIOS({
-        dark: "#3b82f6",
-        light: "#3b82f6",
+        dark: "#fff6c2ff",
+        light: "#468091ff",
       })}
     >
       <NativeTabs.Trigger name="index">
