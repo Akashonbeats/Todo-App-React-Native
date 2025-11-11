@@ -2,6 +2,37 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Features
+
+This Todo app includes:
+- ✅ Modern React Native with Expo
+- ✅ Beautiful gradient UI with dark/light theme support
+- ✅ Convex backend for real-time data sync
+- ✅ **Native iOS Components** including haptic feedback
+- ✅ TypeScript for type safety
+- ✅ File-based routing with Expo Router
+
+## Native iOS Components
+
+This app leverages native iOS components for an authentic iOS experience:
+
+- **Haptic Feedback**: Native iOS haptic feedback on user interactions (add, toggle, edit, delete)
+- More native components available - see [NATIVE_IOS_COMPONENTS.md](./NATIVE_IOS_COMPONENTS.md) for the complete guide
+
+### iOS Components Documentation
+
+📖 **[NATIVE_IOS_COMPONENTS.md](./NATIVE_IOS_COMPONENTS.md)** - Comprehensive guide covering:
+- 10+ native iOS components with detailed analysis
+- UITableView, UITextField, UIProgressView, SF Symbols, UIContextMenu, and more
+- Implementation approaches and recommended packages
+- Accessibility and performance considerations
+
+💻 **[IOS_IMPLEMENTATION_EXAMPLES.md](./IOS_IMPLEMENTATION_EXAMPLES.md)** - Practical implementation guide:
+- Step-by-step code examples for each component
+- Quick start implementations (no installation to custom modules)
+- Testing checklist and common issues
+- Build and deployment instructions
+
 ## Get started
 
 1. Install dependencies
@@ -24,6 +55,15 @@ In the output, you'll find options to open the app in a
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+
+## Testing Native iOS Features
+
+**Note**: Some features like haptic feedback only work on physical iOS devices, not in the simulator.
+
+To test on a physical device:
+```bash
+npx expo run:ios --device
+```
 
 ## Get a fresh project
 
