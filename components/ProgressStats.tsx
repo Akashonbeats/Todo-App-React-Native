@@ -1,4 +1,4 @@
-import { createSettingsStyles } from "@/assets/styles/settings.styles.";
+import { createSettingsStyles } from "@/assets/styles/settings.styles";
 import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";

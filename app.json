@@ -11,7 +11,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.akashsampath.LooneyLists",
-      "icon":"./assets/logo.icon"
+      "icon": "./assets/logo.icon"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +21,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.akashsampath.looneylists"
     },
     "web": {
       "output": "static",

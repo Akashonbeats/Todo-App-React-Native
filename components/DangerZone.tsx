@@ -1,4 +1,4 @@
-import { createSettingsStyles } from "@/assets/styles/settings.styles.";
+import { createSettingsStyles } from "@/assets/styles/settings.styles";
 import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
@@ -40,15 +40,20 @@ const DangerZone = () => {
   };
 
   return (
-    <LinearGradient colors={colors.gradients.surface} style={settingsStyles.section}>
-
+    <LinearGradient
+      colors={colors.gradients.surface}
+      style={settingsStyles.section}
+    >
       <TouchableOpacity
         style={[settingsStyles.actionButton, { borderBottomWidth: 0 }]}
         onPress={handleResetApp}
         activeOpacity={0.7}
       >
         <View style={settingsStyles.actionLeft}>
-          <LinearGradient colors={colors.gradients.danger} style={settingsStyles.actionIcon}>
+          <LinearGradient
+            colors={colors.gradients.danger}
+            style={settingsStyles.actionIcon}
+          >
             <Ionicons name="trash" size={18} color="#ffffff" />
           </LinearGradient>
           <Text style={settingsStyles.actionTextDanger}>Reset App</Text>
