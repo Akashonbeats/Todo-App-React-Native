@@ -1,4 +1,5 @@
 import { createHomeStyles } from "@/assets/styles/home.styles";
+import { BackgroundGradient } from "@/components/Background";
 import EmptyState from "@/components/EmptyState";
 import Header from "@/components/Header";
 import LoadingSpinner from "@/components/LoadingSpinner";
@@ -238,12 +239,13 @@ export default function Index() {
   };
 
   return (
-    <LinearGradient
-      colors={colors.gradients.background}
+    <View
       style={homeStyles.container}
     >
       <StatusBar barStyle={colors.statusBarStyle} />
       <SafeAreaView style={homeStyles.safeArea} edges={["top"]}>
+        <BackgroundGradient />
+
         <Header />
 
         <TodoInput />
@@ -258,6 +260,6 @@ export default function Index() {
           showsVerticalScrollIndicator={false}
         />
       </SafeAreaView>
-    </LinearGradient>
+    </View>
   );
 }

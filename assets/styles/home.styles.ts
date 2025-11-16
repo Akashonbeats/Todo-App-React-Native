@@ -21,6 +21,10 @@ export const createHomeStyles = (colors: ColorScheme) => {
       fontWeight: "500",
       color: colors.text,
     },
+    background: {
+      height: "100%",
+      position: "absolute",
+    },
     header: {
       paddingHorizontal: 24,
       paddingVertical: 32,
