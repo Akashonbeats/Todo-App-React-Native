@@ -1,9 +1,9 @@
 import { createSettingsStyles } from "@/assets/styles/settings.styles";
+import { BackgroundGradient } from "@/components/Background";
 import DangerZone from "@/components/DangerZone";
 import Preferences from "@/components/Preferences";
 import ProgressStats from "@/components/ProgressStats";
 import useTheme from "@/hooks/useTheme";
-import { LinearGradient } from "expo-linear-gradient";
 
 import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -14,11 +14,10 @@ const SettingsScreen = () => {
   const settingsStyles = createSettingsStyles(colors);
 
   return (
-    <LinearGradient
-      colors={colors.gradients.background}
-      style={settingsStyles.container}
-    >
+    <View style={settingsStyles.container}>
       <SafeAreaView style={settingsStyles.safeArea} edges={["top"]}>
+        <BackgroundGradient />
+
         {/* HEADER */}
         <View style={settingsStyles.header}>
           <View style={settingsStyles.titleContainer}>
@@ -36,7 +35,7 @@ const SettingsScreen = () => {
           <DangerZone />
         </ScrollView>
       </SafeAreaView>
-    </LinearGradient>
+    </View>
   );
 };
 export default SettingsScreen;

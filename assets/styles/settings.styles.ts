@@ -1,13 +1,18 @@
 import { ColorScheme } from "@/hooks/useTheme";
 import { StyleSheet } from "react-native";
 
-export const createSettingsStyles = (colors: ColorScheme) => { //Wrapping the Stylesheet because we are using a dynamic Color Palette and to pass them dynamically inside the StyleSheet
+export const createSettingsStyles = (colors: ColorScheme) => {
+  //Wrapping the Stylesheet because we are using a dynamic Color Palette and to pass them dynamically inside the StyleSheet
   const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
     safeArea: {
       flex: 1,
+    },
+    background: {
+      height: "100%",
+      position: "absolute",
     },
     header: {
       paddingHorizontal: 24,
