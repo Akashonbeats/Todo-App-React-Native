@@ -1,6 +1,7 @@
 import { createSettingsStyles } from "@/assets/styles/settings.styles";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
+import { GlassView } from "expo-glass-effect";
 import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import { Switch, Text, View } from "react-native";
@@ -14,10 +15,7 @@ const Preferences = () => {
   const settingsStyles = createSettingsStyles(colors);
 
   return (
-    <LinearGradient
-      colors={colors.gradients.surface}
-      style={settingsStyles.section}
-    >
+    <GlassView glassEffectStyle="clear" style={settingsStyles.section}>
       <Text style={settingsStyles.sectionTitle}>Preferences</Text>
 
       {/* DARK MODE */}
@@ -81,7 +79,7 @@ const Preferences = () => {
           ios_backgroundColor={colors.border}
         />
       </View>
-    </LinearGradient>
+    </GlassView>
   );
 };
 

@@ -50,6 +50,7 @@ export const createSettingsStyles = (colors: ColorScheme) => {
       padding: 24,
       paddingVertical: 35,
       paddingLeft: 30,
+      overflow: "hidden",
       shadowColor: "#000",
       shadowOffset: {
         width: 0,

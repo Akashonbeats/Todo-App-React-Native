@@ -3,6 +3,7 @@ import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useQuery } from "convex/react";
+import { GlassView } from "expo-glass-effect";
 import { LinearGradient } from "expo-linear-gradient";
 import { Text, View } from "react-native";
 
@@ -18,10 +19,7 @@ const ProgressStats = () => {
   const activeTodos = totalTodos - completedTodos;
 
   return (
-    <LinearGradient
-      colors={colors.gradients.surface}
-      style={settingsStyles.section}
-    >
+    <GlassView glassEffectStyle="clear" style={settingsStyles.section}>
       <Text style={settingsStyles.sectionTitle}>Progress Stats</Text>
 
       <View style={settingsStyles.statsContainer}>
@@ -77,7 +75,7 @@ const ProgressStats = () => {
           </View>
         </View>
       </View>
-    </LinearGradient>
+    </GlassView>
   );
 };
 

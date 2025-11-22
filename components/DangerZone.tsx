@@ -3,6 +3,7 @@ import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useMutation } from "convex/react";
+import { GlassView } from "expo-glass-effect";
 import { LinearGradient } from "expo-linear-gradient";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 
@@ -40,10 +41,7 @@ const DangerZone = () => {
   };
 
   return (
-    <LinearGradient
-      colors={colors.gradients.surface}
-      style={settingsStyles.section}
-    >
+    <GlassView glassEffectStyle="clear" style={settingsStyles.section}>
       <TouchableOpacity
         style={[settingsStyles.actionButton, { borderBottomWidth: 0 }]}
         onPress={handleResetApp}
@@ -60,7 +58,7 @@ const DangerZone = () => {
         </View>
         <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
       </TouchableOpacity>
-    </LinearGradient>
+    </GlassView>
   );
 };
 
