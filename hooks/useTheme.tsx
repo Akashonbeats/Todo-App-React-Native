@@ -61,7 +61,7 @@ const lightColors: ColorScheme = {
   primary: "#C89BA3", // Primary pink from gradient
   success: "#A87E8A", // Mauve success
   warning: "#D5A9AF", // Light pink warning
-  danger: "#B8717A", // Deeper rose danger
+  danger: "#d53848ff", // Deeper rose danger
   shadow: "rgba(169, 130, 141, 0.15)", // Pink-tinted shadow
   switch: "#A9828D", // Mauve switch from gradient
   progressBar: "#9d8186ff", // Darker pink for progress bar background
@@ -107,7 +107,7 @@ const darkColors: ColorScheme = {
   primary: "#B88D93", // Primary from dark gradient
   success: "#A87E8A", // Mauve success from gradient
   warning: "#C89BA3", // Light mauve warning
-  danger: "#D17A83", // Rose danger
+  danger: "#d53848ff", // Rose danger
   shadow: "rgba(0, 0, 0, 0.6)",
   switch: "#A9828D", // Dark mauve for switch (swapped from light)
   progressBar: "#dfb6bdff", // Lighter mauve for progress bar background

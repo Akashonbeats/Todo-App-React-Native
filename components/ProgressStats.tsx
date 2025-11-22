@@ -1,10 +1,8 @@
 import { createSettingsStyles } from "@/assets/styles/settings.styles";
 import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
-import { Ionicons } from "@expo/vector-icons";
 import { useQuery } from "convex/react";
 import { GlassView } from "expo-glass-effect";
-import { LinearGradient } from "expo-linear-gradient";
 import { Text, View } from "react-native";
 
 const ProgressStats = () => {
@@ -26,12 +24,6 @@ const ProgressStats = () => {
         {/* TOTAL TODOS */}
         <View style={[settingsStyles.statCard]}>
           <View style={settingsStyles.statIconContainer}>
-            <LinearGradient
-              colors={colors.gradients.misc}
-              style={settingsStyles.statIcon}
-            >
-              <Ionicons name="list" size={20} color="#fff" />
-            </LinearGradient>
           </View>
 
           <View>
@@ -43,12 +35,6 @@ const ProgressStats = () => {
         {/* COMPLETED TODOS */}
         <View style={[settingsStyles.statCard]}>
           <View style={settingsStyles.statIconContainer}>
-            <LinearGradient
-              colors={colors.gradients.misc}
-              style={settingsStyles.statIcon}
-            >
-              <Ionicons name="checkmark-circle" size={20} color="#fff" />
-            </LinearGradient>
           </View>
 
           <View>
@@ -61,12 +47,6 @@ const ProgressStats = () => {
 
         <View style={[settingsStyles.statCard]}>
           <View style={settingsStyles.statIconContainer}>
-            <LinearGradient
-              colors={colors.gradients.misc}
-              style={settingsStyles.statIcon}
-            >
-              <Ionicons name="time" size={20} color="#fff" />
-            </LinearGradient>
           </View>
 
           <View>

@@ -109,19 +109,12 @@ export const createSettingsStyles = (colors: ColorScheme) => {
       justifyContent: "space-between",
       alignItems: "center",
       paddingVertical: 15,
+      marginInline: 16,
     },
     settingLeft: {
       flexDirection: "row",
       alignItems: "center",
       flex: 1,
-    },
-    settingIcon: {
-      width: 36,
-      height: 36,
-      borderRadius: 8,
-      justifyContent: "center",
-      alignItems: "center",
-      marginRight: 16,
     },
     settingText: {
       fontSize: 17,
