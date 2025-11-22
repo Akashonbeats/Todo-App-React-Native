@@ -1,5 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 // AsyncStorage is React Native’s simple, promise-based API for persisting small bits of data on a user’s device. Think of it as the mobile-app equivalent of the browser’s localStorage, but asynchronous and cross-platform.
 
@@ -15,6 +21,8 @@ export interface ColorScheme {
   danger: string;
   shadow: string;
   switch: string;
+  progressBar: string;
+  progressFill: string;
   gradients: {
     background: [string, string];
     surface: [string, string];
@@ -25,7 +33,17 @@ export interface ColorScheme {
     muted: [string, string];
     empty: [string, string];
     misc: [string, string];
-    bggradient: [string, string, string, string, string, string, string, string, string]
+    bggradient: [
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+    ];
   };
   backgrounds: {
     input: string;
@@ -35,88 +53,92 @@ export interface ColorScheme {
 }
 
 const lightColors: ColorScheme = {
-  bg: "#FFF9D6",
-  surface: "#DFF6E3",
-  text: "#2A4E50",
-  textMuted: "#568C91",
-  border: "#63AEC2",          // darker blue for input border
-  primary: "#3F90A8",         // slightly deeper blue for active/progress elements
-  success: "#7BD389",
-  warning: "#EFB96A",
-  danger: "#eb534e",
-  shadow: "rgba(0, 0, 0, 0.15)",
-  switch: "#2A4E50",
+  bg: "#FFF5F7", // Soft pink-white
+  surface: "#F8E8EB", // Light pink surface
+  text: "#5C3D42", // Deep mauve-brown for text
+  textMuted: "#6b555aff", // Muted mauve
+  border: "#D5B1B7", // Soft pink border from gradient
+  primary: "#C89BA3", // Primary pink from gradient
+  success: "#A87E8A", // Mauve success
+  warning: "#D5A9AF", // Light pink warning
+  danger: "#B8717A", // Deeper rose danger
+  shadow: "rgba(169, 130, 141, 0.15)", // Pink-tinted shadow
+  switch: "#A9828D", // Mauve switch from gradient
+  progressBar: "#9d8186ff", // Darker pink for progress bar background
+  progressFill: "#d4aeb5ff", // Even darker mauve for progress fill
 
-gradients: {
-  background: ["#FFF9D6", "#FFF4BE"],
-  surface: ["#dff6e3ff", "#dff6e3ff"],
-  primary: ["#62b5ccff", "#347F96"],
-  success: ["#29454dff", "#29454dff"],
-  warning: ["#62b5ccff", "#4CA3BB"],
-  danger: ["#eb534e", "#D66E6E"],
-  muted: ["#AACBCD", "#8DB5B8"],
-  empty: ["#F5F8EB", "#EBF6E2"],
-  misc: ["#2A4E50","#4a8a8dff"],
-  bggradient: [
-    '#cda2a8',
-    '#daacb2',
-    '#F0EEF1',
-    '#d5b1b7',
-    '#cfb5b9',
-    '#eac5bd',
-    '#cda2a8',
-    '#A9828D',
-    '#daacb2',
-  ]
-},
+  gradients: {
+    background: ["#FFF5F7", "#FFE8ED"],
+    surface: ["#F8E8EB", "#F0DDE1"],
+    primary: ["#CDA2A8", "#B88D93"], // From gradient
+    success: ["#A87E8A", "#946D78"], // From gradient
+    warning: ["#DAACB2", "#CDA2A8"], // From gradient
+    danger: ["#B8717A", "#A05D66"],
+    muted: ["#D5B1B7", "#C89BA3"], // From gradient
+    empty: ["#F8E8EB", "#F0DDE1"],
+    misc: ["#A9828D", "#946D78"], // From gradient
+    bggradient: [
+      "#cda2a8",
+      "#daacb2",
+      "#eac5bd",
+      "#d5b1b7",
+      "#cfb5b9",
+      "#eac5bd",
+      "#cda2a8",
+      "#A9828D",
+      "#daacb2",
+    ],
+  },
 
   backgrounds: {
-    input: "#e1f7e547",
-    editInput: "#D1F0D7",
+    input: "#ffc7d1ff", // Translucent light pink
+    editInput: "#F0DDE1",
   },
 
   statusBarStyle: "dark-content" as const,
 };
 
 const darkColors: ColorScheme = {
-  bg: "#141310ff",
-  surface: "#3B4448",
-  text: "#E6F1F1",
-  textMuted: "#A5C8C8",
-  border: "#164856ff",          // slightly darker teal border
-  primary: "#4CA3BB",         // rich mid-teal for highlights
-  success: "#4CA3BB",
-  warning: "#4CA3BB",
-  danger: "#eb534e",
+  bg: "#1A1315", // Very dark mauve-brown
+  surface: "#2D2225", // Dark mauve surface
+  text: "#F5E8EB", // Light pink-white text
+  textMuted: "#ffdbe4ff", // Muted light mauve
+  border: "#6B4D54", // Dark mauve border
+  primary: "#B88D93", // Primary from dark gradient
+  success: "#A87E8A", // Mauve success from gradient
+  warning: "#C89BA3", // Light mauve warning
+  danger: "#D17A83", // Rose danger
   shadow: "rgba(0, 0, 0, 0.6)",
-  switch: "#2A4E50",
+  switch: "#A9828D", // Dark mauve for switch (swapped from light)
+  progressBar: "#dfb6bdff", // Lighter mauve for progress bar background
+  progressFill: "#c19ea4ff", // Even lighter pink for progress fill
 
   gradients: {
-    background: ["#2d2c25ff", "#000000"],
-    surface: ["#1b2225ff", "#1b2225ff"],
-    primary: ["#62b5ccff", "#347F96"],
-    success: ["#62b5ccff", "#4CA3BB"],
-    warning: ["#468091ff", "#568492ff"],
-    danger: ["#ba4e4bff", "#a95454ff"],
-    muted: ["#66797B", "#52686A"],
-    empty: ["#3C4748", "#404A4B"],
-    misc: ["#2A4E50","#4a8a8dff"],
+    background: ["#1A1315", "#0F0B0D"],
+    surface: ["#2D2225", "#251D20"],
+    primary: ["#B88D93", "#A87E8A"], // From dark gradient
+    success: ["#A87E8A", "#946D78"], // From dark gradient
+    warning: ["#C89BA3", "#B88D93"],
+    danger: ["#D17A83", "#B8717A"],
+    muted: ["#8F6D71", "#7A5C60"], // From dark gradient
+    empty: ["#2D2225", "#251D20"],
+    misc: ["#946D78", "#AB7F85"], // From dark gradient
     bggradient: [
-    '#cda2a8',
-    '#cda2a8',
-    '#A9828D',
-    '#846b6fff',
-    '#877477ff',
-    '#856f6aff',
-    '#7f7f7fff',
-    '#A9828D',
-    '#877477ff',
-  ]
+      "#b88d93",
+      "#b88d93",
+      "#a87e8aff",
+      "#8f6d71ff",
+      "#946d78",
+      "#b88d93",
+      "#946d78",
+      "#946d78",
+      "#ab7f85ff",
+    ],
   },
 
   backgrounds: {
-    input: "#3e474a90",
-    editInput: "#333A3E",
+    input: "#2d222580", // Translucent dark mauve
+    editInput: "#3A2E31",
   },
 
   statusBarStyle: "light-content" as const,

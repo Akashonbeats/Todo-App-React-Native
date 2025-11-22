@@ -71,7 +71,7 @@ export const createHomeStyles = (colors: ColorScheme) => {
       height: 12,
       borderRadius: 6,
       overflow: "hidden",
-      backgroundColor: colors.border,
+      backgroundColor: colors.progressBar,
     },
     progressFill: {
       height: "100%",
@@ -82,7 +82,7 @@ export const createHomeStyles = (colors: ColorScheme) => {
       fontWeight: "700",
       minWidth: 40,
       textAlign: "right",
-      color: colors.success,
+      color: colors.textMuted,
     },
     inputSection: {
       paddingHorizontal: 24,

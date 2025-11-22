@@ -157,14 +157,15 @@ export default function Index() {
                   style={[
                     homeStyles.checkboxInner,
                     {
-                      borderColor: item.isCompleted
-                        ? "transparent"
-                        : colors.border,
+                      backgroundColor: item.isCompleted
+                        ? colors.primary
+                        : "transparent",
+                      borderColor: colors.border,
                     },
                   ]}
                 >
                   {item.isCompleted && (
-                    <Ionicons name="checkmark" size={18} color="#fff" />
+                    <Ionicons name="checkmark" size={18} color={colors.text} />
                   )}
                 </View>
               </TouchableOpacity>
