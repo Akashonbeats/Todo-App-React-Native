@@ -60,18 +60,18 @@ gradients: {
   bggradient: [
     '#cda2a8',
     '#daacb2',
-    '#A9828D',
+    '#F0EEF1',
     '#d5b1b7',
     '#cfb5b9',
     '#eac5bd',
-    '#F0EEF1',
-    '#F0EEF1',
-    '#FFFFFF',
+    '#cda2a8',
+    '#A9828D',
+    '#daacb2',
   ]
 },
 
   backgrounds: {
-    input: "#E1F7E5",
+    input: "#e1f7e547",
     editInput: "#D1F0D7",
   },
 
@@ -103,19 +103,19 @@ const darkColors: ColorScheme = {
     misc: ["#2A4E50","#4a8a8dff"],
     bggradient: [
     '#cda2a8',
-    '#624c4fff',
+    '#cda2a8',
     '#A9828D',
     '#846b6fff',
     '#877477ff',
     '#856f6aff',
     '#7f7f7fff',
-    '#484848ff',
-    '#000000ff',
+    '#A9828D',
+    '#877477ff',
   ]
   },
 
   backgrounds: {
-    input: "#3E474A",
+    input: "#3e474a90",
     editInput: "#333A3E",
   },
 

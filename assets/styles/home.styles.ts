@@ -102,7 +102,6 @@ export const createHomeStyles = (colors: ColorScheme) => {
       fontSize: 17,
       maxHeight: 120,
       fontWeight: "500",
-      backgroundColor: colors.backgrounds.input,
       borderColor: colors.border,
       color: colors.text,
     },
