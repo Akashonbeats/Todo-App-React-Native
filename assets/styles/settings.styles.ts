@@ -41,8 +41,10 @@ export const createSettingsStyles = (colors: ColorScheme) => { //Wrapping the St
       paddingBottom: 120,
     },
     section: {
-      borderRadius: 20,
+      borderRadius: 40,
       padding: 24,
+      paddingVertical: 35,
+      paddingLeft: 30,
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
@@ -72,9 +74,7 @@ export const createSettingsStyles = (colors: ColorScheme) => { //Wrapping the St
     statCard: {
       flexDirection: "row",
       alignItems: "center",
-      padding: 20,
-      borderRadius: 16,
-      borderLeftWidth: 4,
+      paddingVertical: 15,
     },
     statIconContainer: {
       marginRight: 16,
@@ -102,9 +102,7 @@ export const createSettingsStyles = (colors: ColorScheme) => { //Wrapping the St
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      paddingVertical: 20,
-      borderBottomWidth: 1,
-      borderBottomColor: colors.border,
+      paddingVertical: 15,
     },
     settingLeft: {
       flexDirection: "row",
@@ -128,9 +126,7 @@ export const createSettingsStyles = (colors: ColorScheme) => { //Wrapping the St
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-      paddingVertical: 20,
-      borderBottomWidth: 1,
-      borderBottomColor: colors.border,
+      paddingRight: 20,
     },
     actionLeft: {
       flexDirection: "row",

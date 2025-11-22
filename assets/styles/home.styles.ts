@@ -1,7 +1,8 @@
 import { ColorScheme } from "@/hooks/useTheme";
 import { StyleSheet } from "react-native";
 
-export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Stylesheet because we are using a dynamic Color Palette and to pass them dynamically inside the StyleSheet
+export const createHomeStyles = (colors: ColorScheme) => {
+  //Wrapping the Stylesheet because we are using a dynamic Color Palette and to pass them dynamically inside the StyleSheet
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -130,7 +131,7 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
     },
     todoItem: {
       flexDirection: "row",
-      alignItems: "flex-start",
+      alignItems: "center",
       padding: 20,
       borderRadius: 20,
       shadowColor: "#000",
@@ -156,12 +157,12 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
     },
     todoTextContainer: {
       flex: 1,
+      justifyContent: "center",
     },
     todoText: {
       fontSize: 17,
       lineHeight: 24,
       fontWeight: "500",
-      marginBottom: 16,
       color: colors.text,
     },
     todoActions: {
@@ -175,8 +176,29 @@ export const createHomeStyles = (colors: ColorScheme) => { //Wrapping the Styles
       justifyContent: "center",
       alignItems: "center",
     },
+    swipeActionContainer: {
+      width: 120,
+      marginVertical: 12,
+      justifyContent: "center",
+    },
+    swipeAction: {
+      flex: 1,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 8,
+      paddingVertical: 16,
+      borderRadius: 20,
+      marginHorizontal: 10,
+    },
+    swipeActionText: {
+      color: "#ffffff",
+      fontSize: 14,
+      fontWeight: "600",
+    },
     editContainer: {
       flex: 1,
+      alignSelf: "stretch",
     },
     editInput: {
       borderWidth: 2,

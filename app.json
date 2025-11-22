@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Todo-App",
-    "slug": "Todo-App",
+    "name": "Looney Lists",
+    "slug": "LooneyLists",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -10,7 +10,8 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.Todo-App"
+      "bundleIdentifier": "com.akashsampath.LooneyLists",
+      "icon": "./assets/logo.icon"
     },
     "android": {
       "adaptiveIcon": {
@@ -20,7 +21,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.akashsampath.looneylists"
     },
     "web": {
       "output": "static",
