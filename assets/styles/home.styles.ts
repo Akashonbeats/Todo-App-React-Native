@@ -96,7 +96,7 @@ export const createHomeStyles = (colors: ColorScheme) => {
     input: {
       flex: 1,
       borderWidth: 2,
-      borderRadius: 20,
+      borderRadius: 25,
       paddingHorizontal: 20,
       paddingVertical: 16,
       fontSize: 17,
@@ -136,7 +136,8 @@ export const createHomeStyles = (colors: ColorScheme) => {
     todoItem: {
       alignSelf: "center",
       width: "100%",
-      overflow: "visible",
+      overflow: "hidden",
+      borderRadius: 25,
     },
     todoItemContent: {
       flexDirection: "row",

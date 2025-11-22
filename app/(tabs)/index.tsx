@@ -9,12 +9,8 @@ import { Doc, Id } from "@/convex/_generated/dataModel";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { useMutation, useQuery } from "convex/react";
+import { GlassView } from "expo-glass-effect";
 import { LinearGradient } from "expo-linear-gradient";
-import {
-  CornerStyle,
-  ExpoLiquidGlassView,
-  LiquidGlassType,
-} from "expo-liquid-glass-view";
 import { useState } from "react";
 import {
   Alert,
@@ -150,12 +146,7 @@ export default function Index() {
         enabled={!isEditing}
       >
         <View style={homeStyles.todoItemWrapper}>
-          <ExpoLiquidGlassView
-            cornerStyle={CornerStyle.Continuous}
-            type={LiquidGlassType.Clear}
-            cornerRadius={20}
-            style={homeStyles.todoItem}
-          >
+          <GlassView style={homeStyles.todoItem} glassEffectStyle="clear">
             <View style={homeStyles.todoItemContent}>
               <TouchableOpacity
                 style={homeStyles.checkbox}
@@ -234,7 +225,7 @@ export default function Index() {
                 </View>
               )}
             </View>
-          </ExpoLiquidGlassView>
+          </GlassView>
         </View>
       </Swipeable>
     );
