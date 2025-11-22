@@ -25,6 +25,7 @@ export interface ColorScheme {
     muted: [string, string];
     empty: [string, string];
     misc: [string, string];
+    bggradient: [string, string, string, string, string, string, string, string, string]
   };
   backgrounds: {
     input: string;
@@ -46,17 +47,28 @@ const lightColors: ColorScheme = {
   shadow: "rgba(0, 0, 0, 0.15)",
   switch: "#2A4E50",
 
-  gradients: {
-    background: ["#FFF9D6", "#FFF4BE"],
-    surface: ["#dff6e3ff", "#dff6e3ff"],
-    primary: ["#62b5ccff", "#347F96"],
-    success: ["#29454dff", "#29454dff"],
-    warning: ["#62b5ccff", "#4CA3BB"],
-    danger: ["#eb534e", "#D66E6E"],
-    muted: ["#AACBCD", "#8DB5B8"],
-    empty: ["#F5F8EB", "#EBF6E2"],
-    misc: ["#2A4E50","#4a8a8dff"]
-  },
+gradients: {
+  background: ["#FFF9D6", "#FFF4BE"],
+  surface: ["#dff6e3ff", "#dff6e3ff"],
+  primary: ["#62b5ccff", "#347F96"],
+  success: ["#29454dff", "#29454dff"],
+  warning: ["#62b5ccff", "#4CA3BB"],
+  danger: ["#eb534e", "#D66E6E"],
+  muted: ["#AACBCD", "#8DB5B8"],
+  empty: ["#F5F8EB", "#EBF6E2"],
+  misc: ["#2A4E50","#4a8a8dff"],
+  bggradient: [
+    '#cda2a8',
+    '#daacb2',
+    '#A9828D',
+    '#d5b1b7',
+    '#cfb5b9',
+    '#eac5bd',
+    '#F0EEF1',
+    '#F0EEF1',
+    '#FFFFFF',
+  ]
+},
 
   backgrounds: {
     input: "#E1F7E5",
@@ -88,7 +100,18 @@ const darkColors: ColorScheme = {
     danger: ["#ba4e4bff", "#a95454ff"],
     muted: ["#66797B", "#52686A"],
     empty: ["#3C4748", "#404A4B"],
-    misc: ["#2A4E50","#4a8a8dff"]
+    misc: ["#2A4E50","#4a8a8dff"],
+    bggradient: [
+    '#cda2a8',
+    '#624c4fff',
+    '#A9828D',
+    '#846b6fff',
+    '#877477ff',
+    '#856f6aff',
+    '#7f7f7fff',
+    '#484848ff',
+    '#000000ff',
+  ]
   },
 
   backgrounds: {
